@@ -41,3 +41,4 @@ two properties at the same time.
 - example_images: 
     The 'image' folder has some example of images used during the NeurIPS challenge. On the 'label' folder there are the the lables corresponding 
     to the images.
+
