@@ -12,7 +12,7 @@ CNN/Transformer are used to update the parameters of the Transformer/CNN respect
 CNNs focus on the local information and transformers model the long range relation, so the cross teaching can help to learn a unified segmenter with these 
 two properties at the same time.
 
-## Description ##:
+## Description:
 
 - preprocessing.py:
     Image pre-processing: the number of channels are set to three, repeting the images with one channel; 
