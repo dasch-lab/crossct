@@ -42,3 +42,9 @@ two properties at the same time.
     The 'image' folder has some example of images used during the NeurIPS challenge. On the 'label' folder there are the the lables corresponding 
     to the images.
 
+- baseline.yml: 
+    Environment used for the inference (use with predict_5class.py)
+    
+- final_nips.yml:
+    Environment used for the cross-teaching (use with train_bal_val_ctc.py)
+
