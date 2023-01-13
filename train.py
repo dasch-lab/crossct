@@ -42,7 +42,7 @@ from monai.visualize import plot_2d_or_3d_image
 import matplotlib.pyplot as plt
 from datetime import datetime
 import shutil
-from unetr2d import UNETR2D
+from src.unetr2d import UNETR2D
 
 
 monai.config.print_config()
