@@ -14,7 +14,7 @@ two properties at the same time.
 
 ## Description:
 
-- preprocessing.py:
+- preprocessing.py:\
     Image pre-processing: the number of channels are set to three, repeting the images with one channel; 
                           then the images are normalized (intensity normalization) and saved as uint16
     Mask pre-processing:  the instance segmentation masks are transformed into masks with three classes 
@@ -23,28 +23,39 @@ two properties at the same time.
 
 - Add the script for the distance and neighbour lables 
     
-- train.py:
+- train.py:\
     Baseline training: U-Net, ViT+U-Net (unetr2d.py), Swin Transformer + U-Net. The three models are created with MONAI framework.
     The images are cropped with a 256x256 dimension and augmented with MONAI. The model is saved in the work_dir folder.
 
-- train_bal_val_ctc.py: 
+- train_bal_val_ctc.py:\ 
     Cross-teaching between U-Net and the Swin Transformer + U-Net. The two models are created with MONAI framework.
     The images are cropped with a 256x256 dimension and augmented with MONAI.
     The model is saved in the a folder (name need to be specified).
 
-- unetr2d.py: 
+- unetr2d.py:\ 
     This script creates the ViT + U-Net model using MONAI (one of the baseline models proposed by NeurIPS)
 
-- predict_5class.py: 
+- predict_5class.py:\
     prediction using the U-net or the Swin Transformer + U-Net
 
-- example_images: 
+- example_images:\ 
     The 'image' folder has some example of images used during the NeurIPS challenge. On the 'label' folder there are the the lables corresponding 
     to the images.
 
-- baseline.yml: 
+- baseline.yml:\
     Environment used for the inference (use with predict_5class.py)
     
-- final_nips.yml:
+- final_nips.yml:\
     Environment used for the cross-teaching (use with train_bal_val_ctc.py)
+
+- Dockerfile:\
+    Use this file to create a docker image as follows:\
+
+    docker build daschlab \
+    docker image ls (generated tag) \
+    docker tag (generated tag) daschlab:latest\
+    docker container run --gpus "device=0" -m 28G --name daschlab --rm -v $PWD/CellSeg_Test/:/workspace/inputs/ -v $PWD/daschlab_seg/:/workspace/outputs/ daschlab:latest /bin/bash -c "sh predict.sh"\
+    docker save daschlab:latest | gzip > daschlab.tar.gz \   
+
+
 
