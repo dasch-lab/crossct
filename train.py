@@ -62,7 +62,7 @@ def main():
     parser.add_argument('--num_workers', default=4, type=int)
 
     # Model parameters
-    parser.add_argument('--model_name', default='swinunetr', help='select mode: unet, unetr, swinunetr')
+    parser.add_argument('--model_name', default='unet', help='select mode: unet, unetr, swinunetr')
     parser.add_argument('--num_class', default=3, type=int, help='segmentation classes')
     parser.add_argument('--input_size', default=256, type=int, help='segmentation classes')
     

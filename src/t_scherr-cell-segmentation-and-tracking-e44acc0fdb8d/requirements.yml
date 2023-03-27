@@ -1,0 +1,44 @@
+name: cell_segmentation_and_tracking_ve
+channels:
+  - pytorch
+  - conda-forge
+  - anaconda
+dependencies:
+  - cudnn
+  - cudatoolkit=10.2
+  - cvxopt
+  - cython
+  - graphviz
+  - imgaug
+  - ipython
+  - mahotas
+  - matplotlib
+  - numpy
+  - opencv
+  - openh264=1.8
+  - pandas
+  - pillow
+  - pydot
+  - pyqt
+  - pytest
+  - python=3.8
+  - python-graphviz
+  - pytorch=1.6
+  - qimage2ndarray
+  - qt
+  - scikit-image
+  - scipy
+  - shapely
+  - sympy
+  - tensorboardx
+  - tikzplotlib
+  - imageio
+  - seaborn
+  - tifffile
+  - torchvision
+  - pip
+  - pip:
+    - slidingwindow
+    - torchsummary
+    - hiddenlayer
+    - imagecodecs

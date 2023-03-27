@@ -1,0 +1,14 @@
+Unzip the Cell Tracking Challenge (http://celltrackingchallenge.net) data here. Structure of this folder:
+
+- datasets
+	- BF-C2DL-HSC
+		- 01
+		- 01_GT
+		- 02
+		- 02_GT
+	- BF-C2DL-MuSC
+		- ...
+	- Fluo-N2DL-HeLa
+		- ...
+	- Fluo-N3DH-CE
+		- ...

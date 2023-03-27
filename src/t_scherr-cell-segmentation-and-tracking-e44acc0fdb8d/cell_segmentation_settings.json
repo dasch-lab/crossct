@@ -1,0 +1,17 @@
+{
+  "architectures": 
+[
+    [["DU", "conv", "relu", "bn", [64, 1024]], "distance", "smooth_l1"],
+    [["DU", "conv", "relu", "bn", [64, 1024]], "adapted_border", "ce_dice"],
+    [["U", "conv", "relu", "bn", [64, 1024]], "boundary", "ce_dice"],
+    [["U", "conv", "relu", "bn", [64, 1024]], "border", "ce_dice"],
+    [["DualU", "max", "relu", "bn", [64, 1024]], "dual_unet", "dual_unet"],
+    [["U", "conv", "relu", "bn", [64, 1024]], "pena", "j_reg_loss"]
+],
+  "batch_size": 8,
+  "break_condition": 28,
+  "iterations": 11,
+  "learning_rate": 8e-4,
+  "learning_rate_patience": 12,
+  "max_epochs": 200
+}
