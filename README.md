@@ -21,6 +21,14 @@ two properties at the same time.
                           (background, interior and boundary) and then saved as uint16
     The pre-process dataset is saved in the Train_Pre_3class folder
 
+    To create the distance and neighbor labels use: /disk1/neurips/crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/segmentation/training/ctc_training_set.py
+    
+    In partucular: 
+    from segmentation.training.ctc_training_set import create_ctc_training_set
+    create_ctc_training_set("/disk1/neurips/dataset/train_labeled")  
+    
+    See /disk1/neurips/crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/distance_neighbour_representation.ipynb for more details
+
 - Add the script for the distance and neighbour lables 
     
 - train.py:\
