@@ -23,7 +23,7 @@ two properties at the same time.
 
     To create the distance and neighbor labels use: /disk1/neurips/crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/segmentation/training/ctc_training_set.py
     
-    In partucular: 
+    In particular: 
     from segmentation.training.ctc_training_set import create_ctc_training_set
     create_ctc_training_set("/disk1/neurips/dataset/train_labeled")  
     
