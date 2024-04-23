@@ -14,56 +14,74 @@ two properties at the same time.
 
 ## Description:
 
-- preprocessing.py:\
+- preprocessing.py:
     Image pre-processing: the number of channels are set to three, repeting the images with one channel; 
                           then the images are normalized (intensity normalization) and saved as uint16
     Mask pre-processing:  the instance segmentation masks are transformed into masks with three classes 
                           (background, interior and boundary) and then saved as uint16
     The pre-process dataset is saved in the Train_Pre_3class folder
 
-    To create the distance and neighbor labels use: /disk1/neurips/crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/segmentation/training/ctc_training_set.py
+    To create the distance and neighbor labels use: /crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/segmentation/training/ctc_training_set.py
     
     In particular: 
     from segmentation.training.ctc_training_set import create_ctc_training_set
-    create_ctc_training_set("/disk1/neurips/dataset/train_labeled")  
+    create_ctc_training_set("/dataset/train_labeled")  
     
-    See /disk1/neurips/crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/distance_neighbour_representation.ipynb for more details
-
-- Add the script for the distance and neighbour lables 
+    See /crossct/src/t_scherr-cell-segmentation-and-tracking-e44acc0fdb8d/distance_neighbour_representation.ipynb for more details
     
-- train.py:\
+- train.py:
     Baseline training: U-Net, ViT+U-Net (unetr2d.py), Swin Transformer + U-Net. The three models are created with MONAI framework.
     The images are cropped with a 256x256 dimension and augmented with MONAI. The model is saved in the work_dir folder.
 
-- train_bal_val_ctc.py:\ 
+- train_bal_val_ctc.py: 
     Cross-teaching between U-Net and the Swin Transformer + U-Net. The two models are created with MONAI framework.
     The images are cropped with a 256x256 dimension and augmented with MONAI.
     The model is saved in the a folder (name need to be specified).
 
-- unetr2d.py:\ 
+- unetr2d.py: 
     This script creates the ViT + U-Net model using MONAI (one of the baseline models proposed by NeurIPS)
 
-- predict_5class.py:\
+- predict_5class.py:
     prediction using the U-net or the Swin Transformer + U-Net
 
-- example_images:\ 
+- example_images: 
     The 'image' folder has some example of images used during the NeurIPS challenge. On the 'label' folder there are the the lables corresponding 
     to the images.
 
-- baseline.yml:\
+- baseline.yml:
     Environment used for the inference (use with predict_5class.py)
     
-- final_nips.yml:\
+- final_nips.yml:
     Environment used for the cross-teaching (use with train_bal_val_ctc.py)
 
-- Dockerfile:\
+- Dockerfile:
     Use this file to create a docker image as follows:\
 
     docker build daschlab \
     docker image ls (generated tag) \
     docker tag (generated tag) daschlab:latest\
     docker container run --gpus "device=0" -m 28G --name daschlab --rm -v $PWD/CellSeg_Test/:/workspace/inputs/ -v $PWD/daschlab_seg/:/workspace/outputs/ daschlab:latest /bin/bash -c "sh predict.sh"\
-    docker save daschlab:latest | gzip > daschlab.tar.gz \   
+    docker save daschlab:latest | gzip > daschlab.tar.gz \
+
+Model weights are available at [zenodo](https://zenodo.org/records/11047461/files/model_weights.tar.gz?download=1). In the .tar.gz file the following models can be found:
+
+1) Baselines:
+    /work_dir/resunet_3class_3000epochs
+    /work_dir/swinunetr_3class
+    /work_dir/unet_3class
+    /work_dir/unetr_3class_3000epochs
+
+2) Cross-teaching no-pretrained:
+    /work_dir/ct_unet_swinunetr_val_frac_0.4_lr_0.01_BG_Adam_new_pseudo
+
+3) Pre-trained baselines: 
+    /work_dir/baseline_swinunetr_batch_64_val_frac_0.3_lr_0.01_Adam_pre_train
+    /work_dir/baseline_unet_batch_64_val_frac_0.3_lr_0.01_Adam_pre_train
+    /work_dir/baseline_res_unet_batch_64_val_frac_0.3_lr_0.01_Adam_pre_train_nof1
+
+4) Cross-teaching pre-trained:
+   /work_dir/ct_unet_swinunetr_batch_64_patch_256_val_frac_0.3_lr_0.01Adam_ctc_int16_float32_pretrained_baseline_2
+   /work_dir/ct_resunet_swinunetr_batch_64_patch_256_val_frac_0.3_lr_0.01Adam_ctc_int16_float32_pretrained_baseline_2
 
 
 
